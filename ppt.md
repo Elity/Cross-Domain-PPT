@@ -4,51 +4,48 @@ layout: true
 
 ---
 
-# Title 测试
+# 跨域
 
 Fighting
 ???
-这里是备注内容区域
+
+当我们在聊跨域的时候，我们在聊什么？
+
+* 报错
+* JSONP
+* CORS(Cross-Origin Resource Sharing)
 
 ---
 
-# Agenda
-
-1.  Introduction
-2.  Deep-dive
-3.  ...
-
-<!--隐式分页-->
-
-aa
+* ###同源策略
 
 --
 
-bb
+* ###限制原因
 
-<!--aaaaa-->
+--
+
+* ###HTTP 协议
+
+--
+
+* ###如何跨域
 
 ---
 
-# Introduction
-
 .left-column[
 
-## Code Demo
-
-## Code Demo1
+### 同源策略
 
 ]
 .right-column[
 .left[
 
-```js
-function a() {
-*  console.log(123);
-  const arr = [1, 2, 3];
-  return [...arr];
-}
-```
+> > > 同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
+
+--
+
+协议、域名、端口
 
 ]
 ]
