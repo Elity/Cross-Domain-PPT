@@ -184,13 +184,16 @@
             float: right;
             padding-top: 1em;
         }
+
+        .right-img img {
+            width: 100%
+        }
     </style>
 </head>
 
 <body>
 
-    <script src="./remark-latest.min.js">
-    </script>
+    <script src="./js/remark-latest.min.js"></script>
     <script>
         var slideshow = remark.create({
             sourceUrl: 'ppt.md',
@@ -199,6 +202,7 @@
             highlightLines: true
         });
     </script>
+
 </body>
 
 </html>
