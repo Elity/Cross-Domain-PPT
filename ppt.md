@@ -447,6 +447,9 @@ JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm
 
 ---
 
+.right-column[
+.left[
+
 ```
     const review = [
         '何为同源策略',
@@ -457,8 +460,14 @@ JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm
     ]
 ```
 
+]]
+
 ---
 
 ```
     console.log("Thanks!");
+```
+
+```
+
 ```
