@@ -9,13 +9,20 @@ layout: true
 Fighting
 ???
 
+* 为什么要知道跨域 :）发现很多做前端开发的，对于自己息息相关的跨域问题（后端不关心、APP 不关心、客户端也不关心）一知半解，有些甚至是全然不知。
+* 为什么要知道如何跨域 不要把自己框死在前端。http 缓存、http 协议、业务逻辑、后端开发、数据库、服务器配置等等，都要熟悉。
+
+毒鸡汤:)伴随着成长，可怕的是丢了好奇心
+
+你明明知道有那么多丝丝相扣的，你却不知道的技术，你却没有动力去学习
+
+本次分享旨在由浅入深，让之前不懂跨域的小伙伴知道跨域是怎么回事，让已经知道跨域概念的小伙伴，知道如何自己配置跨域，再然后与深谙跨域之道的小伙伴探讨一下一些我的思考。
+
 当我们在聊跨域的时候，我们在聊什么？
 
 * 报错
 * JSONP
 * CORS(Cross-Origin Resource Sharing)
-
-旨在由浅入深，让之前不懂跨域的小伙伴知道跨域是怎么回事，让已经知道跨域的小伙伴，知道如何跨域，与深谙跨域之道的小伙伴探讨一下一些我的思考。
 
 ---
 
@@ -32,6 +39,10 @@ Fighting
 --
 
 * ###如何跨域
+
+--
+
+* ###跨域安全
 
 ???
 
@@ -123,7 +134,7 @@ URL:http://www.example.com/dir/page.html
 
 ???
 
-集思广益参与回答
+集思广益参与讨论
 
 ---
 
@@ -178,7 +189,11 @@ https 向 http 的请求会被浏览器拦截
 # HTTP 协议
 
 ???
-RFC、HTTP 权威指南
+
+* [RFC 2616 (http/1.1)](https://tools.ietf.org/html/rfc2616)
+* [RFC 7540 (http/2)](https://tools.ietf.org/html/rfc7540)
+* [HTTP 权威指南](https://item.jd.com/11056556.html)
+* [http2 Demo](https://http2.akamai.com/demo)
 
 * 形态
 * 连接
@@ -206,7 +221,9 @@ RFC、HTTP 权威指南
 
 ???
 
-喝水、闭嘴、揉腿、亲一口老嘴
+喝水、闭嘴、揉腿、亲一口，老鬼
+
+[视频链接 8:15 秒处](http://tv.cntv.cn/video/C38143/35c0812421a33ddd958986650a4e5c44)
 
 ---
 
@@ -334,7 +351,8 @@ Content-Type: application/json
 
 * 除了 Access-Control-Allow-Origin，其它的响应头均未实现\*号
 * Access-Control-Allow-Headers 中以下是默认支持的，不需要列出来：Accept、Accept-Language、Content-Language、Content-Type。但 Content-Type 只能是 application/x-www-form-urlencoded、multipart/form-data 或 text/plain
-* Access-Control-Allow-Origin 为\*的情况下，不能设置 Access-Control-Allow-Credentials（：为安全操碎了心的委员会
+* Access-Control-Allow-Credentials true/false 区分大小写
+* Access-Control-Max-Age 单位为秒
 
 ---
 
@@ -406,6 +424,27 @@ Content-Type: application/json
 
 预检请求被重定向会出错
 
+预检请求需要返回 200 或 204，更推荐 204 No Content
+
+---
+
+#跨域安全
+
+???
+安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
+
+* Access-Control-Allow-Origin：\* 与之前讨论的浏览器默认允许跨域，但不携带 cookie 一样
+* Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会
+* JSONP 的滥用，危险点在哪，如何防
+* form 表单跨域提交安全问题
+
+JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
+
+* referer 匹配域名
+* referer 未考虑空
+* Content-Type: application/json; charset=utf-8 +/v8 触发 utf7-BOM
+  ![jsonp](./images/dns.png)
+
 ---
 
 ```
@@ -413,7 +452,8 @@ Content-Type: application/json
         '何为同源策略',
         '为何限制跨域',
         'HTTP协议',
-        'CORS'
+        'CORS',
+        '安全'
     ]
 ```
 
