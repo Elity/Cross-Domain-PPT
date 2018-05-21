@@ -353,6 +353,7 @@ Content-Type: application/json
 * Access-Control-Allow-Headers 中以下是默认支持的，不需要列出来：Accept、Accept-Language、Content-Language、Content-Type。但 Content-Type 只能是 application/x-www-form-urlencoded、multipart/form-data 或 text/plain
 * Access-Control-Allow-Credentials true/false 区分大小写
 * Access-Control-Max-Age 单位为秒
+*Access-Control-Expose-Headers  默认只能访问Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma
 
 ---
 
