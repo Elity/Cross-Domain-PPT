@@ -183,7 +183,7 @@ URL:http://www.example.com/dir/page.html
 
 抓包演示
 
-https 向 http 的请求会被浏览器拦截
+https 向 http 的请求会被浏览器拦截(其实也是csp策略，只是浏览器默认启用了)
 
 csp策略限制的情况下，请求不会发送
 
@@ -458,6 +458,10 @@ SErvice workers 未来很有想象空间的东西
 
 
 JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
+
+CSP策略可以到twitter演示
+
+百度搜CSP 阮一峰
 
 * referer 匹配域名
 * referer 未考虑空
