@@ -21,8 +21,9 @@ Fighting
 当我们在聊跨域的时候，我们在聊什么？
 
 * 报错
-* JSONP
+* JSONP (多少人知道原理)
 * CORS(Cross-Origin Resource Sharing)
+
 
 ---
 
@@ -171,8 +172,8 @@ URL:http://www.example.com/dir/page.html
 
 ???
 
-* ###ip 鉴权场景
-* ###免费的分布式爬虫
+* ### ip 鉴权场景
+* ### 免费的分布式爬虫
 
 ### 跨域请求是否真的无法发送？ 是，也不是
 
@@ -183,6 +184,10 @@ URL:http://www.example.com/dir/page.html
 抓包演示
 
 https 向 http 的请求会被浏览器拦截
+
+csp策略限制的情况下，请求不会发送
+
+非简单请求，在option请求通过之前，不会到达后端服务
 
 ---
 
@@ -427,17 +432,30 @@ Content-Type: application/json
 
 预检请求需要返回 200 或 204，更推荐 204 No Content
 
+我们使用Service workers 缓存cdn上的静态资源，但是跨域报错。
+fetch mode  https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode
+
+Cache相关API https://developer.mozilla.org/zh-CN/docs/Web/API/Cache
+
+SErvice workers https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
+
+SErvice workers 未来很有想象空间的东西
+
 ---
 
 #跨域安全
 
 ???
+
+同源策略的初衷是为了安全，但牺牲了很多便捷性，跨域撕开也一道口子，如何保证安全？
 安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
 
 * Access-Control-Allow-Origin：\* 与之前讨论的浏览器默认允许跨域，但不携带 cookie 一样
 * Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会
-* JSONP 的滥用，危险点在哪，如何防
 * form 表单跨域提交安全问题
+* [CSP策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
+* JSONP 的滥用，危险点在哪，如何防，是否script标签一定会发送cookie？（crossorigin="anonymous"，传递错误的值也不会发送cookie）
+
 
 JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
 
