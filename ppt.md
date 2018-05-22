@@ -459,7 +459,7 @@ SErvice workers 未来很有想象空间的东西
 同源策略的初衷是为了安全，但牺牲了很多便捷性，跨域撕开也一道口子，如何保证安全？安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
 
 * Access-Control-Allow-Origin：\* 与之前讨论的浏览器默认允许跨域，但不携带 cookie 一样
-* Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会
+* Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会 [不安全配置出错 demo](/demo/8.html)
 * form 表单跨域提交安全问题
 * [CSP 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
 * JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？（crossorigin="anonymous"，传递错误的值也不会发送 cookie） [JSON 安全问题 Demo](/demo/6.html)
