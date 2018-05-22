@@ -10,20 +10,21 @@ Fighting
 ???
 
 * 为什么要知道跨域 :）发现很多做前端开发的，对于自己息息相关的跨域问题（后端不关心、APP 不关心、客户端也不关心）一知半解，有些甚至是全然不知。
-* 为什么要知道如何跨域 不要把自己框死在前端。http 缓存、http 协议、业务逻辑、后端开发、数据库、服务器配置等等，都要熟悉。
+* 为什么要知道如何跨域 不要把自己框死在前端。缓存、http 协议、业务逻辑、后端开发、数据库、服务器配置等等，都要熟悉。
 
-毒鸡汤:)伴随着成长，可怕的是丢了好奇心
+当你明知道自己还有这么多不懂的时候，你心里就不痒痒么？
 
 你明明知道有那么多丝丝相扣的，你却不知道的技术，你却没有动力去学习
+
+毒鸡汤:)伴随着成长，可怕的是丢了好奇心
 
 本次分享旨在由浅入深，让之前不懂跨域的小伙伴知道跨域是怎么回事，让已经知道跨域概念的小伙伴，知道如何自己配置跨域，再然后与深谙跨域之道的小伙伴探讨一下一些我的思考。
 
 当我们在聊跨域的时候，我们在聊什么？
 
-* 报错
+* 报错 [demo1](/demo/1.html)
 * JSONP (多少人知道原理)
 * CORS(Cross-Origin Resource Sharing)
-
 
 ---
 
@@ -108,6 +109,10 @@ Fighting
 网络访问控制（JSONP 算是一种取巧）
 img、script、link、video、object、iframe
 
+* [网络访问 demo](/demo/1.html)
+* [Dom 访问 demo](/demo/2.html)
+* [资源访问 demo](/demo/3.html)
+
 ---
 
 .left-column[
@@ -178,16 +183,16 @@ URL:http://www.example.com/dir/page.html
 ### 跨域请求是否真的无法发送？ 是，也不是
 
 * 资源加载 img,css,script,video...
-* form 表单提交
-* 普通 ajax 请求
+* form 表单提交 [form 跨域提交](/demo/5.html)
+* 普通 ajax 请求 [跨域是否会发送请求成功 demo](/demo/7.html)
 
 抓包演示
 
-https 向 http 的请求会被浏览器拦截(其实也是csp策略，只是浏览器默认启用了)
+https 向 http 的请求会被浏览器拦截(其实也是 csp 策略，只是浏览器默认启用了)
 
-csp策略限制的情况下，请求不会发送
+csp 策略限制的情况下，请求不会发送
 
-非简单请求，在option请求通过之前，不会到达后端服务
+~~~ 非简单请求，在 option 请求通过之前，不会到达后端服务 ~~~
 
 ---
 
@@ -301,11 +306,13 @@ Content-Type: application/json
 被滥用的 jsonp
 被滥用的 cookie
 
-* JSONP
+* JSONP（无法 post）
+* location.hash
 * document.domain(主域相同)
 * document.name
 * navigator 跨域 （IE6、7）
 * message 机制 (HTML5)
+* flash
 * ...
 
 跨域只是针对浏览器的策略，因为浏览器是公共环境。
@@ -358,7 +365,7 @@ Content-Type: application/json
 * Access-Control-Allow-Headers 中以下是默认支持的，不需要列出来：Accept、Accept-Language、Content-Language、Content-Type。但 Content-Type 只能是 application/x-www-form-urlencoded、multipart/form-data 或 text/plain
 * Access-Control-Allow-Credentials true/false 区分大小写
 * Access-Control-Max-Age 单位为秒
-*Access-Control-Expose-Headers  默认只能访问Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma
+  \*Access-Control-Expose-Headers 默认只能访问 Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma
 
 ---
 
@@ -428,14 +435,16 @@ Content-Type: application/json
 
 ???
 
+[触发 fetch 请求 demo](/demo/7.html)
+
 预检请求被重定向会出错
 
-预检请求需要返回 200 或 204，更推荐 204 No Content
+预检请求需要返回 200 或 204，更推荐 204 No Content douban 这里直接让预检进入了后端服务
 
-我们使用Service workers 缓存cdn上的静态资源，但是跨域报错。
-fetch mode  https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode
+我们使用 Service workers 缓存 cdn 上的静态资源，但是跨域报错。
+fetch mode https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode
 
-Cache相关API https://developer.mozilla.org/zh-CN/docs/Web/API/Cache
+Cache 相关 API https://developer.mozilla.org/zh-CN/docs/Web/API/Cache
 
 SErvice workers https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
 
@@ -447,24 +456,22 @@ SErvice workers 未来很有想象空间的东西
 
 ???
 
-同源策略的初衷是为了安全，但牺牲了很多便捷性，跨域撕开也一道口子，如何保证安全？
-安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
+同源策略的初衷是为了安全，但牺牲了很多便捷性，跨域撕开也一道口子，如何保证安全？安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
 
 * Access-Control-Allow-Origin：\* 与之前讨论的浏览器默认允许跨域，但不携带 cookie 一样
 * Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会
 * form 表单跨域提交安全问题
-* [CSP策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
-* JSONP 的滥用，危险点在哪，如何防，是否script标签一定会发送cookie？（crossorigin="anonymous"，传递错误的值也不会发送cookie）
-
+* [CSP 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
+* JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？（crossorigin="anonymous"，传递错误的值也不会发送 cookie） [JSON 安全问题 Demo](/demo/6.html)
 
 JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
 
-CSP策略可以到twitter演示
+CSP 策略可以到 twitter 演示
 
-百度搜CSP 阮一峰
+百度搜 CSP 阮一峰
 
 * referer 匹配域名
-* referer 未考虑空
+* referer 未考虑空 ,人造空 referer [demo4](/demo/4.html)
 * Content-Type: application/json; charset=utf-8 +/v8 触发 utf7-BOM
   ![jsonp](./images/dns.png)
 

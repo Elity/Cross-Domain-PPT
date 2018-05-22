@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>人造空Referer</title>
+</head>
+
+<body>
+    <script>
+        let ifr = document.createElement('iframe')
+        ifr.src = `javascript:'<script>const cb = res => console.log(res)<\/script>\
+            <script src="http://fighting.com/v1/auth/myInfo?callback=cb"><\/script>\
+        '`
+        document.body.appendChild(ifr)
+    </script>
+</body>
+
+</html>

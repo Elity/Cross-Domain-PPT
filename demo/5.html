@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表单跨域提交请求</title>
+</head>
+
+<body>
+    当前昵称：
+    <span id='nick'></span>
+    <hr />
+    <form action="http://fighting.com/v2/update/userInfo" method="post">
+        <input type="text" name='nickname' value='' placeholder="输入昵称">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        let cb = res => {
+            document.getElementById('nick').innerText = res.data.user.user.nick
+        }
+
+        let s = document.createElement('script')
+        s.src = 'http://fighting.com/v1/auth/myInfo?callback=cb'
+        document.body.appendChild(s)
+    </script>
+</body>
+
+</html>

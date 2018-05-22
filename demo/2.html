@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe跨域</title>
+</head>
+
+<body>
+
+    <iframe id='ifr' frameborder="0"></iframe>
+    <script>
+        let ifr = document.getElementById('ifr')
+        ifr.onload = function () {
+            console.log('contentWindow', document.getElementById('ifr').contentWindow)
+            console.log('contentDocument', document.getElementById('ifr').contentDocument)
+        }
+        ifr.src = 'https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&lang=zh_CN'
+    </script>
+</body>
+
+</html>
