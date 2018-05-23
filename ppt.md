@@ -462,7 +462,7 @@ SErvice workers 未来很有想象空间的东西
 * Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会 [不安全配置出错 demo](/demo/8.html)
 * form 表单跨域提交安全问题
 * [CSP 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
-* JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？（crossorigin="anonymous"，传递错误的值也不会发送 cookie） [JSON 安全问题 Demo](/demo/6.html)
+* JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？ 先看实例--> [JSON 安全问题 Demo](/demo/6.html) （crossorigin="anonymous"，传递错误的值也不会发送 cookie）
 
 JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
 

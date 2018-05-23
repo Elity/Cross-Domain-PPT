@@ -15,6 +15,34 @@
         $.ajax({ url: 'http://fighting.com/v1/auth/myInfo', dataType: 'jsonp' })
             .then(res => document.write(JSON.stringify(res)))
 
+
+
+
+
+
+
+        /*
+        $.ajax({ url: 'http://fighting.com/v1/auth/myInfo', dataType: 'jsonp', crossDomain: false })
+        */
+
+
+
+
+
+
+
+
+
+
+        /*
+            let cb = res => {
+                console.log(JSON.stringify(res))
+            }
+            let s = document.createElement('script')
+            s.crossOrigin = '1'
+            s.src = 'http://fighting.com/v1/auth/myInfo?callback=cb'
+            document.body.appendChild(s)
+        */
     </script>
 </body>
 
