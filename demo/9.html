@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>预检请求demo + 跨域是否成功demo</title>
+    <title>跨域ajax不报错demo</title>
 </head>
 
 <body>
     <script>
-        fetch('https://api.douban.com/v2/movie/top250', { headers: { token: 123456 } });
-        fetch('http://fighting.com/v1/auth/myInfo', { headers: { token: 123456 } });
+        fetch('https://www.smzdm.com', { mode: 'no-cors' })
     </script>
 </body>
 

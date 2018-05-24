@@ -52,7 +52,12 @@ Fighting
 
 学习任何技术都应该以如此心态及规划
 
-在知识广度够的情况下，加深深度
+在知识广度够的情况下，加深深度。不然说起跨域，只知道 jsonp
+
+以 promise 为例讲解如何拓宽知识深度；
+promise 不是仅仅那几个 api；
+promise 译作承诺 解决信任问题，未来异步编程的基石；
+callback 可调、可不调、调几次、异步调、同步调；
 
 ---
 
@@ -68,7 +73,7 @@ Fighting
 .right-column[
 .left[
 
-> 如果两个页面的协议、端口、域名都相同，则两个页面具有相同的源。
+> 如果两个页面的协议、域名、端口都相同，则两个页面具有相同的源。
 
 ]
 ]
@@ -101,12 +106,15 @@ Fighting
 * cookie
 * storage
 * indexDB
+* DOM
+
+网络访问控制
+
 * web 字体
 * canvas 加载图片
 * webGL
-* DOM
 
-网络访问控制（JSONP 算是一种取巧）
+（JSONP 算是一种取巧）
 img、script、link、video、object、iframe
 
 * [网络访问 demo](/demo/1.html)
@@ -142,6 +150,8 @@ URL:http://www.example.com/dir/page.html
 
 集思广益参与讨论
 
+安全？怎么不安全？
+
 ---
 
 .left-column[
@@ -169,7 +179,7 @@ URL:http://www.example.com/dir/page.html
 .right-column[
 .left[
 
-* 以上的攻击基于 cookie 的跨域共享，既然是 cookie 的不安全导致了跨域的不安全，仅仅禁止跨域共享 cookie 就好了，为何要限制跨域网络的访问？
+* 以上的攻击基于 cookie （本地数据）的跨域共享，既然是 cookie 的不安全导致了跨域的不安全，仅仅禁止跨域共享 cookie 就好了，为何要限制跨域网络的访问？
 * 跨域限制存在的情况下，跨域请求是否真的无法发送？
 
 ]
@@ -177,7 +187,7 @@ URL:http://www.example.com/dir/page.html
 
 ???
 
-* ### ip 鉴权场景
+* ### ip 鉴权场景，内网系统，有一个电脑可以上网，就能拿到所有的内网资源
 * ### 免费的分布式爬虫
 
 ### 跨域请求是否真的无法发送？ 是，也不是
@@ -205,14 +215,14 @@ csp 策略限制的情况下，请求不会发送
 * [HTTP 权威指南](https://item.jd.com/11056556.html)
 * [http2 Demo](https://http2.akamai.com/demo)
 
-* 形态
-* 连接
-* 网关
-* 认证
-* 代理
-* 缓存
-* 安全
-* 编码
+- 形态
+- 连接
+- 网关
+- 认证
+- 代理
+- 缓存
+- 安全
+- 编码
 
 不做细致讲解
 
@@ -248,16 +258,16 @@ csp 策略限制的情况下，请求不会发送
 .left[
 
 ```
-GET /resources/public-data/ HTTP/1.1
-Host: bar.other
+GET /v1/getUserInfo HTTP/1.1
+Host: fighting.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.170 Safari/537.36
 Accept: text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8
 Accept-Language: en-us,en;q=0.5
 Accept-Encoding: gzip,deflate
 Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
 Connection: keep-alive
-Referer: http://foo.example/examples/access-control/simpleXSInvocation.html
-Origin: http://foo.example
+Referer: http://fighting.com/examples/access-control/simpleXSInvocation.html
+Origin: http://fighting.com
 ```
 
 ]
@@ -287,7 +297,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 Content-Type: application/json
 
-{"msg":"success",code:10}
+{"msg":"success","code":10}
 ```
 
 ]
@@ -302,6 +312,8 @@ Content-Type: application/json
 ### CORS(Cross-Origin Resource Sharing)
 
 ???
+
+[cors 兼容性](https://caniuse.com/#search=cors)
 
 被滥用的 jsonp
 被滥用的 cookie
@@ -365,7 +377,7 @@ Content-Type: application/json
 * Access-Control-Allow-Headers 中以下是默认支持的，不需要列出来：Accept、Accept-Language、Content-Language、Content-Type。但 Content-Type 只能是 application/x-www-form-urlencoded、multipart/form-data 或 text/plain
 * Access-Control-Allow-Credentials true/false 区分大小写
 * Access-Control-Max-Age 单位为秒
-  \*Access-Control-Expose-Headers 默认只能访问 Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma
+* Access-Control-Expose-Headers 默认只能访问 Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma
 
 ---
 
@@ -435,11 +447,13 @@ Content-Type: application/json
 
 ???
 
-[触发 fetch 请求 demo](/demo/7.html)
+[触发 option 请求 demo](/demo/7.html)
 
 预检请求被重定向会出错
 
-预检请求需要返回 200 或 204，更推荐 204 No Content douban 这里直接让预检进入了后端服务
+预检请求需要返回 200 或 204，更推荐 204 No Content, douban 这里直接让预检进入了后端服务
+
+[跨域 ajax 不报错 demo](/demo/9.html)
 
 我们使用 Service workers 缓存 cdn 上的静态资源，但是跨域报错。
 fetch mode https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode
