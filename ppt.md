@@ -471,7 +471,7 @@ CSP 策略可以到 twitter 演示
 百度搜 CSP 阮一峰
 
 * referer 匹配域名
-* referer 未考虑空 ,人造空 referer [demo4](/demo/4.html)
+* referer 未考虑空 ,人造空 referer [demo4](/demo/4.html), [Referrer-Policy](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Referrer-Policy)
 * Content-Type: application/json; charset=utf-8 +/v8 触发 utf7-BOM
   ![jsonp](./images/dns.png)
 
