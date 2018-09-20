@@ -16,7 +16,7 @@ Fighting
 
 当我们在聊跨域的时候，我们在聊什么？
 
-* 报错 [demo1](/demo/1.html)
+* 报错 [demo1](./demo/1.html)
 * JSONP (多少人知道原理)
 * CORS(Cross-Origin Resource Sharing)
 
@@ -111,9 +111,9 @@ callback 可调、可不调、调几次、异步调、同步调；
 （JSONP 算是一种取巧）
 img、script、link、video、object、iframe
 
-* [网络访问 demo](/demo/1.html)
-* [Dom 访问 demo](/demo/2.html)
-* [资源访问 demo](/demo/3.html)
+* [网络访问 demo](./demo/1.html)
+* [Dom 访问 demo](./demo/2.html)
+* [资源访问 demo](./demo/3.html)
 
 ---
 
@@ -187,8 +187,8 @@ URL:http://www.example.com/dir/page.html
 ### 跨域请求是否真的无法发送？ 是，也不是
 
 * 资源加载 img,css,script,video...
-* form 表单提交 [form 跨域提交](/demo/5.html)
-* 普通 ajax 请求 [跨域是否会发送请求成功 demo](/demo/7.html)
+* form 表单提交 [form 跨域提交](./demo/5.html)
+* 普通 ajax 请求 [跨域是否会发送请求成功 demo](./demo/7.html)
 
 抓包演示
 
@@ -441,13 +441,13 @@ Content-Type: application/json
 
 ???
 
-[触发 option 请求 demo](/demo/7.html)
+[触发 option 请求 demo](./demo/7.html)
 
 预检请求被重定向会出错
 
 预检请求需要返回 200 或 204，更推荐 204 No Content, douban 这里直接让预检进入了后端服务
 
-[跨域 ajax 不报错 demo](/demo/9.html)
+[跨域 ajax 不报错 demo](./demo/9.html)
 
 我们使用 Service workers 缓存 cdn 上的静态资源，但是跨域报错。
 fetch mode https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode
@@ -467,10 +467,10 @@ SErvice workers 未来很有想象空间的东西
 同源策略的初衷是为了安全，但牺牲了很多便捷性，然后有了跨域，跨域撕开了一道口子，如何保证安全？安全是头等大事，如果滥用跨域导致安全问题，那就得不偿失了。
 
 * Access-Control-Allow-Origin：\* 与之前讨论的浏览器默认允许跨域，但不携带 cookie 一样
-* Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会 [不安全配置出错 demo](/demo/8.html)
+* Access-Control-Allow-Credentials:true 允许携带 cookie 的情况下，上面选项不能设置为\* 为什么？ （：为安全操碎了心的委员会 [不安全配置出错 demo](./demo/8.html)
 * form 表单跨域提交安全问题
 * [CSP 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy__by_cnvoid)
-* JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？ 先看实例--> [JSON 安全问题 Demo](/demo/6.html) （crossorigin="anonymous"，传递错误的值也不会发送 cookie）
+* JSONP 的滥用，危险点在哪，如何防，是否 script 标签一定会发送 cookie？ 先看实例--> [JSON 安全问题 Demo](./demo/6.html) （crossorigin="anonymous"，传递错误的值也不会发送 cookie）
 
 JSONP 防御可从 referer 来展开讲，以[什么值得买](https://www.smzdm.com)的个人信息接口展开来讲
 
@@ -479,7 +479,7 @@ CSP 策略可以到 twitter 演示
 百度搜 CSP 阮一峰
 
 * referer 匹配域名
-* referer 未考虑空 ,人造空 referer [demo4](/demo/4.html), [Referrer-Policy](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Referrer-Policy)
+* referer 未考虑空 ,人造空 referer [demo4](./demo/4.html), [Referrer-Policy](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Referrer-Policy)
 * Content-Type: application/json; charset=utf-8 +/v8 触发 utf7-BOM
   ![jsonp](./images/dns.png)
 
